@@ -3,6 +3,7 @@
   "decimal": {:git, "git://github.com/ericmj/decimal.git", "33b52b6d8fec1e18245fbd7f1312a43103e25f5b", []},
   "dynamo": {:git, "git://github.com/elixir-lang/dynamo.git", "dbccc1c65bf4027284e8f655acd2f39587851b64", []},
   "ecto": {:git, "git://github.com/elixir-lang/ecto.git", "132ce75a5cc3509b77c744b41996a4869d9c3b4d", []},
+  "exjson": {:git, "git://github.com/guedes/exjson.git", "bd9dcb7e78c2344bb491098405f2b81d53979dcd", []},
   "hackney": {:git, "git://github.com/benoitc/hackney.git", "7f2a0b5996313d930277786e7ff5d538e9346547", [tag: "0.10.1"]},
   "hackney_lib": {:git, "https://github.com/benoitc/hackney_lib.git", "eecdb481f1d38bfb194896bffdf9bdcdd967ae96", [tag: "0.2.2"]},
   "mime": {:git, "git://github.com/dynamo/mime.git", "7e56a3dd5692afcd39c9797ae2898c5841967098", []},
