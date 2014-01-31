@@ -4,4 +4,4 @@ config :dynamo,
   cache_static: false,
   exceptions_handler: Exceptions.Debug
 
-config :server, port: 4000
+config :server, port: 12346
