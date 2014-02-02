@@ -1,5 +1,6 @@
 defmodule ApplicationRouter do
   use Dynamo.Router
+	import Ecto.Query
 
   prepare do
     conn.fetch([:params, :body])
@@ -11,11 +12,15 @@ defmodule ApplicationRouter do
   end
 
 	post "/users" do
-		request_json = ExJSON.parse(conn.req_body)
+		request_json = :jsx.decode(conn.req_body)
+		user = Microblog.User.new(username: request_json["username"], realname: request_json["real_name"])
+		Microblog.Repo.create(user)
 		redirect conn, to: "/users/#{request_json["username"]}", status: 303
 	end
 
 	get "/users/:username" do
-		conn.resp 200, ExJSON.generate([])
+		query = from u in Microblog.User, where: u.username == ^conn.params[:username]
+		[user] = Microblog.Repo.all(query)
+		conn.resp 200, :jsx.encode([username: user.username, real_name: user.realname, followers: [], following: []])
 	end
 end

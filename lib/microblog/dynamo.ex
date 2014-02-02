@@ -1,4 +1,4 @@
-defmodule MapiKataElixirDynamoEcto.Dynamo do
+defmodule Microblog.Dynamo do
   use Dynamo
 
   config :dynamo,

@@ -1,4 +1,4 @@
-defmodule MapiKataElixirDynamoEcto do
+defmodule Microblog do
   use Application.Behaviour
 
   @doc """
@@ -6,6 +6,6 @@ defmodule MapiKataElixirDynamoEcto do
   application and its Dynamos.
   """
   def start(_type, _args) do
-    MapiKataElixirDynamoEcto.Dynamo.start_link([max_restarts: 5, max_seconds: 5])
+		Microblog.Supervisor.start_link
   end
 end
