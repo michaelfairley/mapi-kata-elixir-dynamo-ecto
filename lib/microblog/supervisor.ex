@@ -1,12 +1,12 @@
 defmodule Microblog.Supervisor do
-	use Supervisor.Behaviour
+  use Supervisor.Behaviour
 
-	def start_link do
-		:supervisor.start_link(__MODULE__, [])
+  def start_link do
+    :supervisor.start_link(__MODULE__, [])
   end
 
-	def init(_) do
-		children = [
+  def init(_) do
+    children = [
       worker(Microblog.Repo, []),
       supervisor(Microblog.Dynamo, [])
     ]

@@ -6,6 +6,6 @@ defmodule Microblog do
   application and its Dynamos.
   """
   def start(_type, _args) do
-		Microblog.Supervisor.start_link
+    Microblog.Supervisor.start_link
   end
 end
