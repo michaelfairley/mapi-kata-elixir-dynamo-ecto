@@ -9,6 +9,10 @@ defmodule Microblog.UserValidator do
       errors = Keyword.put(errors, :username, ["is taken"])
     end
 
+    if String.length(params["password"]) < 8 do
+      errors = Keyword.put(errors, :password, ["is too short"])
+    end
+
     errors
   end
 end
