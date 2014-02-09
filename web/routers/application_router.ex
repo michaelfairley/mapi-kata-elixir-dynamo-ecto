@@ -13,15 +13,14 @@ defmodule ApplicationRouter do
   post "/users" do
     request_json = :jsx.decode(conn.req_body)
 
-    count = request_json["username"] |>
-        Microblog.User.with_username |>
-        Microblog.Repo.count
-    if count > 0 do
-      conn.resp 422, :jsx.encode(errors: [username: ["is taken"]])
-    else
+    validation_errors = Microblog.UserValidator.validate(request_json)
+
+    if validation_errors == [] do
       user = Microblog.User.new(username: request_json["username"], realname: request_json["real_name"])
       Microblog.Repo.create(user)
       redirect conn, to: "/users/#{request_json["username"]}", status: 303
+    else
+      conn.resp 422, :jsx.encode(errors: validation_errors)
     end
   end
 
