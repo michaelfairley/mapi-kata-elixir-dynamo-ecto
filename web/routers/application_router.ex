@@ -13,10 +13,9 @@ defmodule ApplicationRouter do
   post "/users" do
     request_json = :jsx.decode(conn.req_body)
 
-    [count] = request_json["username"] |>
+    count = request_json["username"] |>
         Microblog.User.with_username |>
-        Microblog.User.count |>
-        Microblog.Repo.all
+        Microblog.Repo.count
     if count > 0 do
       conn.resp 422, :jsx.encode(errors: [username: ["is taken"]])
     else

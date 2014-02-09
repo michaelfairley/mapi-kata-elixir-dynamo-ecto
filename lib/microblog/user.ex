@@ -10,8 +10,4 @@ defmodule Microblog.User do
   def with_username(username) do
     from u in Microblog.User, where: u.username == ^username
   end
-
-  def count(query) do
-    from u in query, select: count(u.id)
-  end
 end
